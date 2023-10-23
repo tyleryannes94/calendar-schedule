@@ -2,6 +2,11 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  $(".saveBtn").click(function() {
+    const hour = $(this).parent().attr("id");
+    const text = $(this).siblings(".description").val();
+    localStorage.setItem(hour, text);
+  });
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -22,8 +27,16 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+  $(".time-block").each(function() {
+    var hour = $(this).attr("id");
+    var text = localStorage.getItem(hour);
+
+    if (text) {
+      $(this).find(".description").val(text);
+    }
 
   // TODO: Add code to display the current date in the header of the page.
   $("#currentDay").text(dayjs().format('MMMM D, YYYY, HH:mm:ss'));
 
+})
 });
