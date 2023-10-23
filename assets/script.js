@@ -1,8 +1,7 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+
 
 $(function () {
+  // Created these constant variables to create the time blocks in JS rather than in HTML; this way it's more dynamic and cleaner code
   const container = $(".container-lg.px-5");
   const timeBlocks = [
     { id: "hour-9", time: "9AM" },
@@ -15,7 +14,7 @@ $(function () {
     { id: "hour-16", time: "4PM" },
     { id: "hour-17", time: "5PM" }
 ];
-
+// This code runs a loop for each of the timeblock array items to create the calendar timeblock; this was done via HTML but instead I'm using JS to append the time blocks to the container.
 timeBlocks.forEach(block => {
   container.append(`<div id="${block.id}" class="row time-block">
       <div class="col-2 col-md-1 hour text-center py-3">${block.time}</div>
