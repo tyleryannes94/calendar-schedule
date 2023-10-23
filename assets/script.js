@@ -3,6 +3,19 @@
 // in the html.
 
 $(function () {
+  const container = $(".container-lg.px-5");
+  const timeBlocks = [
+    { id: "hour-9", time: "9AM" },
+    { id: "hour-10", time: "10AM" },
+    { id: "hour-11", time: "11AM" },
+    { id: "hour-12", time: "12pm" },
+    { id: "hour-13", time: "1PM" },
+    { id: "hour-14", time: "2PM" },
+    { id: "hour-15", time: "3PM" },
+    { id: "hour-16", time: "4PM" },
+    { id: "hour-17", time: "5PM" }
+];
+
   // event listener that saves the item to localStorage when the save button is pressed.
   $(".saveBtn").click(function() {
     const hour = $(this).parent().attr("id");
@@ -12,8 +25,8 @@ $(function () {
 
   // Add the past, present, or future class to each time block
   $(".time-block").each(function() {
-    var hour = parseInt($(this).attr("id").split("-")[1]);
-    var currentHour = dayjs().hour();
+    const hour = parseInt($(this).attr("id").split("-")[1]);
+    const currentHour = dayjs().hour();
 
     if (hour < currentHour) {
       $(this).addClass("past");
@@ -33,7 +46,7 @@ $(function () {
       $(this).find(".description").val(text);
     }
 
-  // TODO: Add code to display the current date in the header of the page.
+// Displays the current date in the header of the page.
   $("#currentDay").text(dayjs().format('MMMM D, YYYY, HH:mm:ss'));
 
 })
